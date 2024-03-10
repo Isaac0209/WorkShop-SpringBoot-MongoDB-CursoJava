@@ -1,41 +1,52 @@
 package com.isaac.workshopmongo.dto;
 
 import java.io.Serializable;
+import java.time.Instant;
 
-import com.isaac.workshopmongo.entity.User;
+import com.isaac.workshopmongo.entity.Post;
 
-public class PostDTO implements Serializable{
-
+public class PostDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String name;
-	private String email;
+	private String id;
+	private Instant data;
+	private String title;
+	private String body;
 	
 	public PostDTO() {
 		
 	}
-
-	public PostDTO(User obj) {
-		super();
-		this.name = obj.getName();
-		this.email = obj.getEmail();
+	public PostDTO(Post post) {
+		this.id = post.getId();
+		this.data = post.getData();
+		this.title = post.getTitle();
+		this.body = post.getBody();
 	}
-
-	public String getName() {
-		return name;
+	public String getId() {
+		return id;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setId(String id) {
+		this.id = id;
 	}
-
-	public String getEmail() {
-		return email;
+	public Instant getData() {
+		return data;
 	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setData(Instant data) {
+		this.data = data;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getBody() {
+		return body;
+	}
+	public void setBody(String body) {
+		this.body = body;
 	}
 	
+
 }
