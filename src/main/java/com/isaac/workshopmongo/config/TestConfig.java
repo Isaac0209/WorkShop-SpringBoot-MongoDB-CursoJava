@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.isaac.workshopmongo.dto.AuthorDTO;
+import com.isaac.workshopmongo.dto.CommentDTO;
 import com.isaac.workshopmongo.entity.Post;
 import com.isaac.workshopmongo.entity.User;
 import com.isaac.workshopmongo.repository.PostRepository;
@@ -35,8 +36,12 @@ public class TestConfig implements CommandLineRunner {
 		Post p1 = new Post(null, Instant.now(), "Partiu Viagem", "Vou viajar para são paulo", new AuthorDTO(maria));
 		Post p2 = new Post(null, Instant.now(), "Bom dia", "Acordei feliz", new AuthorDTO(maria));
 		postR.saveAll(Arrays.asList(p1, p2));
-		
+		CommentDTO c1 = new CommentDTO("Opa", Instant.now(), new AuthorDTO(alex));
+		CommentDTO c2 = new CommentDTO("Eita", Instant.now(), new AuthorDTO(maria));
+
 		maria.getPosts().addAll(Arrays.asList(p1, p2));
+		p1.getComments().addAll(Arrays.asList(c1,c2));
+		postR.save(p1);
 		userR.save(maria);
 	}
 }
