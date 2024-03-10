@@ -33,7 +33,10 @@ public class TestConfig implements CommandLineRunner {
 		userR.saveAll(Arrays.asList(maria,alex,bob));
 		postR.deleteAll();
 		Post p1 = new Post(null, Instant.now(), "Partiu Viagem", "Vou viajar para são paulo", new PostDTO(maria));
-		Post p2 = new Post(null, Instant.now(), "Bom dia", "Acordei feliz", new PostDTO(alex));
+		Post p2 = new Post(null, Instant.now(), "Bom dia", "Acordei feliz", new PostDTO(maria));
 		postR.saveAll(Arrays.asList(p1, p2));
+		
+		maria.getPosts().addAll(Arrays.asList(p1, p2));
+		userR.save(maria);
 	}
 }
