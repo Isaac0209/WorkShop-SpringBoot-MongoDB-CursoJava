@@ -24,4 +24,9 @@ public class PostResources {
 	public ResponseEntity<List<PostDTO>> findByUser(@PathVariable String id){
 		return ResponseEntity.ok().body(service.findByUser(id));
 	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Post> findById(@PathVariable String id){
+		return ResponseEntity.ok().body(service.findById(id));
+	}
 }
